@@ -4,7 +4,7 @@ https://docs.google.com/spreadsheets/d/1iSpzAOfGMQLu26E5eHjnUNTfwSKWpsLldW2pTdKH
 
 # Seconta Renta
 
-Esto es un repositorio de muestra para el testeo de Planet Salud en Cypress.
+Esto es un repositorio de muestra para el testeo de Seconta Renta en Cypress.
 
 - [Iniciar la app](#iniciar-la-app)
 - [Scripts](#scripts)
@@ -17,10 +17,10 @@ Esto es un repositorio de muestra para el testeo de Planet Salud en Cypress.
 Decargar/clonar proyecto.
 
 ```
-git clone https://github.com/SayJaviCano/planet-salud.git
+git clone https://github.com/SayJaviCano/secontarenta.git
 ```
 
-Abrir carpeta `planet-salud` en Visual Studio Code y abrir terminal dentro de Visual Studio Code.
+Abrir carpeta `secontarenta` en Visual Studio Code y abrir terminal dentro de Visual Studio Code.
 
 Instalar dependencias
 
