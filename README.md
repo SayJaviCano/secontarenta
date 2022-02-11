@@ -1,4 +1,8 @@
-# Planet Salud
+# Test cases
+
+https://docs.google.com/spreadsheets/d/1iSpzAOfGMQLu26E5eHjnUNTfwSKWpsLldW2pTdKHExQ/edit#gid=0
+
+# Seconta Renta
 
 Esto es un repositorio de muestra para el testeo de Planet Salud en Cypress.
 
