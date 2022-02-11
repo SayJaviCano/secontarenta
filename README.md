@@ -68,3 +68,27 @@ git pull --rebase
 | Jira       | Desde esta aplicación gestionaremos todo lo que hay por hacer en cuestion de trabajo. Nos ayudará a controlar que cosas están pendientes por hacer, cuales están en proceso y cuales han sido terminadas                                       |
 | Github     | En esta aplicación tendremos todo el código en el que se encuentran los tests                                                                                                                                                                  |
 | QA Touch   | En esta aplicación tendremos la definición de los tests que vamos a automatizar. Una descripción de los mismos y los pasos manuales que debe uno seguir para reporducirlos. Se especificará también cuál es el resultado esperado de cada test |
+
+
+## Actualizar rama
+
+Proceso para actualizar una rama propia a la rama `main`.
+
+- Colocarte en tu rama y guardar/descartar los cambios para estar en un estado sin cambios realizados.
+- Colocarte en main y sincronizar en boton 🔄 junto a nombre de rama
+- Colocarte en tu rama de nuevo
+- En Terminal: 
+ ```
+git rebase main
+```
+- Solucionar conflictos decidiendo entre nuestros cambios (incoming) y los de main (current).
+- Añadir archivos con conflictos ➕
+ ```
+git rebase --continue
+```
+
+ ```
+:qa
+```
+- Sincronizar cambios de nuevo 
+
