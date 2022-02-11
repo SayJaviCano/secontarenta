@@ -4,7 +4,7 @@ https://docs.google.com/spreadsheets/d/1iSpzAOfGMQLu26E5eHjnUNTfwSKWpsLldW2pTdKH
 
 # Seconta Renta
 
-Esto es un repositorio de muestra para el testeo de Planet Salud en Cypress.
+Esto es un repositorio de muestra para el testeo de Seconta Renta en Cypress.
 
 - [Iniciar la app](#iniciar-la-app)
 - [Scripts](#scripts)
