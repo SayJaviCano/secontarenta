@@ -3,5 +3,5 @@
     "baseUrl": "https://renta.seconta.es/",
     "viewportWidth": 1100,
     "viewportHeitgh": 660,
-    "video": false
+    "video": true
   }
