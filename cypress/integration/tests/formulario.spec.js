@@ -46,6 +46,8 @@ describe('TS3 - Declaración casado/a', () => {
     cy.get('[type="radio"][name="estado_civil_declarante"]').check('2', {
       force: true,
     });
+    cy.get('#minusvalia_declarante').select('0');
+    cy.get('#movilidad_reducida_declarante').select('0');
     cy.get('#importe_casilla_renta_anterior_declarante')
       .clear()
       .type(textosRegistro.datosDeclarante.casilla);
@@ -107,6 +109,7 @@ describe('TS3 - Declaración casado/a', () => {
   it('[TS3C4] Debería grabar los datos de los ascendientes', () => {
     cy.get('#s4 [type="button"]').contains('Sección 4: Ascendientes').click();
     cy.get('[type="radio"][name="ascendientes"]').check('1', { force: true });
+    cy.get('#parentesco_ascendiente_1').select('2');
     cy.get('[class="form-select"][name="minusvalia_ascendiente_1"]').select(
       '0'
     );
@@ -123,6 +126,7 @@ describe('TS3 - Declaración casado/a', () => {
     cy.get('#nombre_ascendiente_1')
       .clear()
       .type(textosRegistro.ascendiente1.nombre);
+    cy.get('.add-ascendiente').click();
     cy.get('#s4 button[type="submit"]').contains('Guardar y seguir').click();
   });
 
@@ -133,25 +137,25 @@ describe('TS3 - Declaración casado/a', () => {
       .clear()
       .type(textosRegistro.datosDeclarante.direccion);
     cy.get('#cp_declarante').clear().type(textosRegistro.datosDeclarante.cp);
-    cy.get('[type="checkbox"][name="comprada_antes_2013_declarante"]').check(
-      '1',
-      { force: true }
-    );
-    cy.get('[type="checkbox"][name="hipoteca_declarante"]').check('1', {
-      force: true,
-    });
+    cy.get('#comprada_vivienda_declarante[value="1"]').click({ force: true });
+    cy.get('[for="vivienda_comprada_anterior_2013_declarante"]').click();
+    cy.get('[name="vivienda_comprada_hipoteca_declarante"]').select('1');
+
+    // cy.get('[type="checkbox"][name="hipoteca_declarante"]').check('1', {
+    //   force: true,
+    // });
 
     // Si existe el documento lo borra, si no existe lo sube
-    cy.get('#s5').then(($body) => {
-      if ($body.text().includes('Borrar')) {
-        cy.contains('Borrar').click();
-      } else {
-        cy.get(selectoresFormulario.s5.botonSubirArchivo).invoke('show');
-        cy.get(selectoresFormulario.s5.botonSubirArchivo)
-          .attachFile('prueba-imagen.jpg')
-          .trigger('input');
-      }
-    });
+    // cy.get('#s5').then(($body) => {
+    //   if ($body.text().includes('Borrar')) {
+    //     cy.contains('Borrar').click();
+    //   } else {
+    //     cy.get(selectoresFormulario.s5.botonSubirArchivo).invoke('show');
+    //     cy.get(selectoresFormulario.s5.botonSubirArchivo)
+    //       .attachFile('prueba-imagen.jpg')
+    //       .trigger('input');
+    //   }
+    // });
     // Fin de código verificación
 
     cy.get('#s5 button[type="submit"]').contains('Guardar y seguir').click();
@@ -161,23 +165,19 @@ describe('TS3 - Declaración casado/a', () => {
     cy.get('#s6 [type="button"]')
       .contains('Sección 6: Rendimientos del trabajo')
       .click();
-    cy.get('[type="radio"][name="cambio_domicilio_rt_declarante"]')
-      .invoke('show')
-      .check('1');
-    cy.get('[type="radio"][name="cambio_domicilio_rt_declarante"]')
-      .invoke('show')
-      .check('0');
+    cy.get('#pension_expareja_rt_declarante_si').check({
+      force: true,
+    });
+    cy.get('#pension_expareja_cantidad_rt_declarante').clear().type('100');
+    cy.get('#cambio_domicilio_rt_declarante_no[value="0"]').check({
+      force: true,
+    });
     cy.get('#cuotas_sindicales_rt_declarante').clear().type(100);
     cy.get('#cuota_c_profesional_rt_declarante').clear().type(200);
-    cy.get('[type="radio"][name="seconta_procesado_autonomo_rt_declarante"]')
-      .invoke('show')
-      .check('1');
-    cy.get('[type="radio"][name="alta_autonomo_posterior_2019_rt_declarante"]')
-      .invoke('show')
-      .check('1');
+    cy.get('#autonomo_rt_declarante_2').check({ force: true });
     cy.get('#cuantas_actividades_alta_rt_declarante').clear().type('2');
-    //
-    // Si existe el documento lo borra, si no existe lo sube
+    // //
+    // // Si existe el documento lo borra, si no existe lo sube
     cy.get('#div_file_libro_registro_compras_rt_declarante').then(($body) => {
       if ($body.text().includes('Borrar')) {
         cy.contains('Borrar').click({ force: true });
@@ -192,9 +192,9 @@ describe('TS3 - Declaración casado/a', () => {
           .trigger('input');
       }
     });
-    // Fin de código verificación
+    // // Fin de código verificación
 
-    // Si existe el documento lo borra, si no existe lo sube
+    // // Si existe el documento lo borra, si no existe lo sube
     cy.get('#div_file_libro_registro_ventas_rt_declarante').then(($body) => {
       if ($body.text().includes('Borrar')) {
         cy.contains('Borrar').click({ force: true });
@@ -209,22 +209,7 @@ describe('TS3 - Declaración casado/a', () => {
           .trigger('input');
       }
     });
-    // Fin de código verificación
-    //
-    // Si existe el documento lo borra, si no existe lo sube
-    cy.get('#div_file_modulos_rt_declarante').then(($body) => {
-      if ($body.text().includes('Borrar')) {
-        cy.contains('Borrar').click({ force: true });
-      } else {
-        cy.get('input[type="file"][name="file_modulos_rt_declarante"]').invoke(
-          'show'
-        );
-        cy.get('input[type="file"][name="file_modulos_rt_declarante"]')
-          .attachFile('prueba-imagen.jpg')
-          .trigger('input');
-      }
-    });
-    // Fin de código verificación
+    // // Fin de código verificación
 
     cy.get('#s6 button[type="submit"]').contains('Guardar y seguir').click();
   });
@@ -270,7 +255,8 @@ describe('TS3 - Declaración casado/a', () => {
         }
       }
     );
-
+    cy.get('.add-rci_declarante').click();
+    cy.get('.delete-alquiler_rci_declarante').click();
     cy.get('#s7 button[type="submit"]').contains('Guardar y seguir').click();
   });
 
@@ -323,13 +309,19 @@ describe('TS3 - Declaración casado/a', () => {
         }
       }
     );
-
     cy.get('#s8 button[type="submit"]').contains('Guardar y seguir').click();
   });
-  it('[TS3C9] Debería confirmar el pago', () => {
+  it.only('[TS3C9] Debería confirmar el pago', () => {
     cy.get('#s9 [type="button"]').contains('Resumen de la declaración').click();
+    cy.get(':nth-child(2) > .col-md-4 > .tx_resumen').should(
+      'have.text',
+      textosRegistro.datosDeclarante.nombre
+    );
+    cy.get(':nth-child(2) > .col-md-8 > .tx_resumen').should(
+      'have.text',
+      textosRegistro.datosDeclarante.apellidos
+    );
     cy.get('[type="radio"][name="forma_pago"]').check('1', { force: true });
-
     cy.contains('Terminar y enviar').click();
   });
 

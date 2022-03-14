@@ -23,7 +23,7 @@ export const textosRegistro = {
   },
   datosDeclarante: {
     nombre: 'MANUEL',
-    apellidos: 'Gómez de la Serna',
+    apellidos: 'GÓMEZ DE LA SERNA',
     dni: '12345678Z',
     clave: 'Password12',
     clave2: 'Password12',
